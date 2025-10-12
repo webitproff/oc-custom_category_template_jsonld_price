@@ -1,6 +1,7 @@
-# oc-custom_category_template_jsonld_price
 # Утилита кастомизации шаблонов категорий + JSON-LD + Цена для ocStore / OpenCart
+
 ## Модуль для кастомных шаблонов страниц товаров с JSON-LD микроразметкой и улучшениями цен
+
 [![Лицензия](https://img.shields.io/badge/лицензия-BSD-blue.svg)](https://github.com/webitproff/oc-custom_category_template_jsonld_price/blob/main/LICENSE)
 [![Версия](https://img.shields.io/badge/версия-1.5-green.svg)](https://github.com/webitproff/oc-custom_category_template_jsonld_price/releases)
 [![Совместимость с ocStore](https://img.shields.io/badge/ocStore-3.0.3.7-orange.svg)](https://ocstore.com/)
