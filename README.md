@@ -1,3 +1,265 @@
+# Custom Category Template + JSON-LD + Price for ocStore / OpenCart
+## Module for Custom Product Page Templates with JSON-LD Microdata and Price Enhancements
+[![License](https://img.shields.io/badge/license-BSD-blue.svg)](https://github.com/webitproff/oc-custom_category_template_jsonld_price/blob/main/LICENSE)
+[![Version](https://img.shields.io/badge/version-1.5-green.svg)](https://github.com/webitproff/oc-custom_category_template_jsonld_price/releases)
+[![ocStore Compatibility](https://img.shields.io/badge/ocStore-3.0.3.7-orange.svg)](https://ocstore.com/)
+[![PHP](https://img.shields.io/badge/PHP-7.3-blueviolet.svg)](https://www.php.net/releases/7_3_0.php)
+
+## Overview
+**Custom Category Template + JSON-LD + Price** is a free OCMOD-based module for ocStore/OpenCart that enhances product pages by:
+1. Assigning custom templates to products based on their category.
+2. Adding JSON-LD microdata for improved SEO.
+3. Including price and currency information for structured data.
+4. Indicating out-of-stock status.
+
+This module modifies the product page controller (`catalog/controller/product/product.php`) to dynamically select templates for specific product categories and enrich product pages with JSON-LD structured data for search engine optimization. It has been tested with **ocStore 3.0.3.7 + PHP 7.3** but may work with other OpenCart 3.x versions (test on a site copy first).
+
+## Introduction for Beginners
+The **Custom Category Template + JSON-LD + Price** module customizes how product pages are displayed in your ocStore/OpenCart online store. It allows you to use different templates for products in specific categories (e.g., a unique template for "Generators") and adds structured data (JSON-LD) to improve how search engines like Google understand your product pages. It also includes price and stock information for better SEO and user experience.
+
+**Why is this needed?**
+- **Custom Templates**: Products in different categories (e.g., Generators, E-bikes, or Scooters) may need unique layouts or designs. This module lets you assign specific templates to products based on their category.
+- **SEO Enhancement**: JSON-LD microdata helps search engines display rich snippets (e.g., product name, price, and availability) in search results, improving visibility.
+- **Price and Stock**: Adds price (including special prices) and stock status to the product page data, making it easier to display or use in templates.
+
+**Important for beginners**: Always back up your website (files and database) before installing any module. Use tools like FileZilla for files and phpMyAdmin for the database to ensure you can restore your site if needed.
+
+### Why It Matters
+- **Better User Experience**: Custom templates allow tailored designs for different product types, improving how customers interact with your store.
+- **SEO Benefits**: JSON-LD microdata can improve search engine rankings and click-through rates by providing structured information about products.
+- **Flexibility**: Easily extendable for additional categories or templates without major code changes.
+
+## Key Features
+- Dynamically assigns custom templates to products based on their category ID.
+- Adds JSON-LD microdata for product name, description, price, and currency.
+- Handles special prices (discounts) and falls back to regular prices when no special price is available.
+- Indicates out-of-stock status for products with zero or negative quantity.
+- Processes product descriptions to remove HTML tags and convert `<br>` tags to spaces for clean JSON-LD output.
+- Uses OCMOD for seamless integration without overwriting core files.
+- Supports UTF-8 encoding for multilingual compatibility.
+- Lightweight and focused, modifying only the product page controller.
+
+## Module File Structure
+This module is an OCMOD XML file that modifies the `catalog/controller/product/product.php` file. No additional files are included in the module itself, but it references custom template files that must exist in the `catalog/view/theme/your_theme/template/product/` directory.
+
+```
+catalog/
+├── controller/
+│   └── product/
+│       └── product.php # Modified by OCMOD to add custom template logic and JSON-LD
+├── view/
+│   └── theme/
+│       └── your_theme/
+│           └── template/
+│               └── product/
+│                   ├── product.twig # Default product template
+│                   └── product_generator.twig # Example custom template for category ID 468
+```
+
+## Requirements
+Ensure your store meets these requirements:
+- **ocStore/OpenCart**: Version 3.0.3.7 (other OpenCart 3.x versions may work, but test on a site copy).
+- **PHP**: Version 7.3. Check in the admin panel: "System" → "Server Info" → "PHP Version."
+- **File Access**: Requires FTP (via FileZilla) or hosting panel access (cPanel, DirectAdmin, etc.) to upload the OCMOD file and custom templates.
+- **Custom Templates**: Custom template files (e.g., `product_generator.twig`) must exist in your theme’s template directory.
+- **Database**: MySQL or MariaDB, accessible via phpMyAdmin for backups.
+- **Theme**: Your store must use a theme that supports Twig templates.
+
+**How to check PHP version?**
+1. Log into the admin panel.
+2. Go to "System" → "Server Info."
+3. Find "PHP Version." If it’s not 7.3, contact your hosting provider to update.
+
+## Detailed Installation Instructions
+Follow these steps to install the module, designed for beginners and advanced users alike.
+
+### 1. Downloading the Module
+- Visit the project page on GitHub: [https://github.com/webitproff/oc-custom_category_template_jsonld_price](https://github.com/webitproff/oc-custom_category_template_jsonld_price).
+- Click "Code" → "Download ZIP" and extract the archive, or download the OCMOD XML file directly.
+- Advanced users can clone the repository: `git clone https://github.com/webitproff/oc-custom_category_template_jsonld_price.git`.
+
+### 2. Preparing Custom Templates
+- Ensure custom template files (e.g., `product_generator.twig`) exist in your theme’s template directory: `catalog/view/theme/your_theme/template/product/`.
+- Example: For category ID 468, create `product_generator.twig` based on your default `product.twig` template, customizing it as needed.
+- If custom templates are missing, the module will fall back to the default `product/product.twig`.
+
+### 3. Uploading the OCMOD File
+- Log into your ocStore/OpenCart admin panel.
+- Navigate to **Extensions → Installer**.
+- Click **Upload** and select the OCMOD XML file (e.g., `custom_category_template_jsonld_price.ocmod.xml`).
+- Wait for the upload to complete successfully.
+
+### 4. Installing the Module
+- Go to **Extensions → Modifications**.
+- Locate "Custom Category Template + JSON-LD + Price" in the list.
+- Click the **Refresh** button (circular arrows) to apply the OCMOD changes.
+- Verify that the modification is enabled (green checkmark).
+
+### 5. Clearing Cache
+- Go to **System → Tools → Cache Manager** (or equivalent in your admin panel).
+- Clear both the system cache and template cache to ensure the changes take effect.
+
+### 6. Verifying Installation
+- Open a product page belonging to a category with a custom template (e.g., category ID 468).
+- Check the page source (right-click → "View Page Source") for JSON-LD microdata in a `<script type="application/ld+json">` tag.
+- Ensure the correct template is loaded (e.g., `product_generator.twig` for category ID 468).
+
+## Using the Module
+### 1. Custom Template Assignment
+- The module checks the categories of a product using `$this->model_catalog_product->getCategories($product_id)`.
+- It uses a predefined array to map category IDs to custom templates:
+  ```php
+  $custom_templates = [
+      468 => 'product/product_generator',
+      // 455 => 'product/product_ebike',
+      // 785 => 'product/product_escooter'
+  ];
+  ```
+- If a product belongs to a category listed in `$custom_templates`, the module uses the specified template (e.g., `product/product_generator` for category ID 468). Otherwise, it falls back to `product/product`.
+- To add more custom templates, edit the `$custom_templates` array in the OCMOD XML file, uncommenting or adding new entries for other category IDs and their corresponding templates.
+
+### 2. JSON-LD Microdata
+- The module adds the following data to the product page for JSON-LD:
+  - **Product Name**: `$data['oct_micro_heading_title']` and its JSON-encoded version `$data['oct_micro_heading_title_json']`.
+  - **Description**: `$data['oct_description_microdata']` (HTML-decoded) and `$data['oct_description_microdata_json']` (stripped of HTML tags, with `<br>` tags replaced by spaces).
+  - **Price**: `$data['oct_price_microdata']` (uses special price if available, otherwise regular price, cast to float).
+  - **Currency**: `$data['oct_price_currency']` (defaults to 'UAH' if no currency is set in the session).
+  - **Stock Status**: `$data['out_of_stock']` (true if product quantity is ≤ 0).
+- These variables are available in your Twig template for rendering JSON-LD structured data.
+
+### 3. Customizing Templates
+- In your custom template (e.g., `product_generator.twig`), you can access the new variables:
+  - `{{ oct_micro_heading_title }}`: Product name.
+  - `{{ oct_description_microdata }}`: Full description (HTML).
+  - `{{ oct_micro_heading_title_json }}`: JSON-encoded product name.
+  - `{{ oct_description_microdata_json }}`: JSON-encoded description (HTML tags removed).
+  - `{{ oct_price_microdata }}`: Product price (float).
+  - `{{ oct_price_currency }}`: Currency code (e.g., 'UAH').
+  - `{{ out_of_stock }}`: Boolean indicating if the product is out of stock.
+- Example JSON-LD in your template:
+  ```twig
+  <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": {{ oct_micro_heading_title_json|raw }},
+      "description": {{ oct_description_microdata_json|raw }},
+      "offers": {
+          "@type": "Offer",
+          "price": {{ oct_price_microdata }},
+          "priceCurrency": "{{ oct_price_currency }}",
+          "availability": "{{ out_of_stock ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock' }}"
+      }
+  }
+  </script>
+  ```
+
+### 4. Backup Recommendation
+- Before making changes or testing, back up your site’s files (via FileZilla) and database (via phpMyAdmin).
+- Test custom templates on a staging site to avoid disrupting your live store.
+
+## How the Module Works
+- **Template Selection**:
+  - Retrieves the product’s categories using `$this->model_catalog_product->getCategories($product_id)`.
+  - Checks if any category ID matches the `$custom_templates` array.
+  - Sets the `$template` variable to the corresponding template path or defaults to `product/product`.
+- **JSON-LD Data**:
+  - Extracts the product name and description from `$product_info`.
+  - Cleans the description by replacing `<br>` and `<br />` with spaces using `preg_replace`.
+  - JSON-encodes the name and description with `JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES` for proper UTF-8 and URL handling.
+  - Determines the price (special or regular) and casts it to a float to remove trailing zeros.
+  - Retrieves the currency from the session, defaulting to 'UAH'.
+  - Sets the out-of-stock status based on product quantity.
+- **Output**:
+  - Replaces the default template rendering line (`$this->response->setOutput($this->load->view('product/product', $data))`) with the dynamic `$template` variable.
+
+## Technical Details
+- **Version**: 1.5
+- **Compatibility**: ocStore 3.0.3.7, OpenCart 3.x (test on other versions).
+- **PHP**: 7.3 or higher.
+- **OCMOD**: Modifies `catalog/controller/product/product.php` using two operations:
+  1. Adds logic before the output line to set the template and prepare JSON-LD data.
+  2. Replaces the default template path with the dynamic `$template`.
+- **Security**: Uses standard OpenCart session and model methods, with no additional security concerns.
+- **Encoding**: Supports UTF-8 for multilingual stores.
+- **Dependencies**: Requires the `catalog/model/catalog/product.php` model to retrieve categories and the existence of custom template files.
+
+## Limitations
+- Custom templates must be created manually and placed in the theme’s template directory.
+- Only supports categories defined in the `$custom_templates` array (e.g., category ID 468 for `product_generator`).
+- Does not handle custom modules or non-standard product data fields.
+- JSON-LD output requires proper integration in the Twig template to be effective.
+- No automatic fallback for missing templates (ensure they exist).
+
+## Code Structure
+### OCMOD XML: `custom_category_template_jsonld_price.ocmod.xml`
+- **File Modified**: `catalog/controller/product/product.php`
+- **Operations**:
+  1. **Before Output**:
+     - Adds logic to check product categories and assign a custom template.
+     - Prepares JSON-LD data (name, description, price, currency, stock status).
+     - Example code added:
+       ```php
+       $template = 'product/product';
+       if (isset($product_info)) {
+           $categories = $this->model_catalog_product->getCategories($this->request->get['product_id']);
+           $custom_templates = [
+               468 => 'product/product_generator',
+               // 455 => 'product/product_ebike',
+               // 785 => 'product/product_escooter'
+           ];
+           if ($categories) {
+               foreach ($categories as $category) {
+                   if (isset($custom_templates[$category['category_id']])) {
+                       $template = $custom_templates[$category['category_id']];
+                       break;
+                   }
+               }
+           }
+           // JSON-LD fields
+           $data['oct_micro_heading_title'] = $product_info['name'];
+           $data['oct_description_microdata'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
+           $clean_description = preg_replace('#<br\s*/?>#i', ' ', $data['oct_description_microdata']);
+           $data['oct_micro_heading_title_json'] = json_encode($data['oct_micro_heading_title'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+           $data['oct_description_microdata_json'] = json_encode(strip_tags($clean_description), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+           $data['text_buy_description'] = sprintf(
+               $this->language->get('text_buy_description'),
+               $product_info['name'],
+               $product_info['name']
+           );
+           $price = $product_info['special'] ?: $product_info['price'];
+           $data['oct_price_microdata'] = (float) $price;
+           $data['oct_price_currency'] = $this->session->data['currency'] ?? 'UAH';
+           $data['out_of_stock'] = ($product_info['quantity'] <= 0);
+       }
+       ```
+  2. **Replace Output**:
+     - Replaces `$this->response->setOutput($this->load->view('product/product', $data))` with:
+       ```php
+       $this->response->setOutput($this->load->view($template, $data));
+       ```
+     - Uses the dynamic `$template` variable to load the appropriate template.
+
+## Requirements
+- ocStore/OpenCart 3.0.3.7 (or compatible OpenCart 3.x version).
+- PHP 7.3 or higher.
+- Custom template files in `catalog/view/theme/your_theme/template/product/`.
+- OCMOD system enabled in the admin panel.
+
+## Author
+- webitproff — [GitHub](https://github.com/webitproff)
+- Date: October 12, 2025
+- Project: [oc-custom_category_template_jsonld_price](https://github.com/webitproff/oc-custom_category_template_jsonld_price)
+
+## License
+BSD License
+
+## Support and Contributions
+- Create issues: [GitHub Issues](https://github.com/webitproff/oc-custom_category_template_jsonld_price/issues)
+- Pull requests are welcome.
+
+___
+
 # Утилита кастомизации шаблонов категорий + JSON-LD + Цена для ocStore / OpenCart
 
 ## Модуль для кастомных шаблонов страниц товаров с JSON-LD микроразметкой и улучшениями цен
