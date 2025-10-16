@@ -6,6 +6,9 @@
 [![PHP](https://img.shields.io/badge/PHP-7.3-blueviolet.svg)](https://www.php.net/releases/7_3_0.php)
 
 ## Overview
+
+<img src="https://raw.githubusercontent.com/webitproff/oc-custom_category_template_jsonld_price/refs/heads/main/Opencart-Custom-Product-Page-Templates-2025-1.webp" alt="Custom Product Page Templates for Category for ocStore / OpenCart">
+
 **Custom Category Template + JSON-LD + Price** is a free OCMOD-based module for ocStore/OpenCart that enhances product pages by:
 1. Assigning custom templates to products based on their category.
 2. Adding JSON-LD microdata for improved SEO.
