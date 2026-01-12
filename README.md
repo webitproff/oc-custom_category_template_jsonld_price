@@ -9,6 +9,8 @@
 
 <img src="https://raw.githubusercontent.com/webitproff/oc-custom_category_template_jsonld_price/refs/heads/main/Opencart-Custom-Product-Page-Templates-2025-1.webp" alt="Custom Product Page Templates for Category for ocStore / OpenCart">
 
+### 👀 [View in the marketplace](https://abuyfile.com/en/market/opencart/oc-mods/custom-product-page-templates-for-category-on-ocstore-opencart)
+
 **Custom Category Template + JSON-LD + Price** is a free OCMOD-based module for ocStore/OpenCart that enhances product pages by:
 1. Assigning custom templates to products based on their category.
 2. Adding JSON-LD microdata for improved SEO.
@@ -257,7 +259,7 @@ Follow these steps to install the module, designed for beginners and advanced us
 ## License
 BSD License
 
-## Support and Contributions
+## 🛟 Support and Contributions
 - Create issues: [GitHub Issues](https://github.com/webitproff/oc-custom_category_template_jsonld_price/issues)
 - Pull requests are welcome.
 
@@ -280,6 +282,8 @@ ___
 4. Отображения статуса отсутствия товара на складе.
 
 Модуль модифицирует контроллер страницы товара (`catalog/controller/product/product.php`), чтобы динамически выбирать шаблоны для определённых категорий товаров и добавлять JSON-LD структурированные данные для поисковой оптимизации. Модуль протестирован с **ocStore 3.0.3.7 + PHP 7.3**, но может работать с другими версиями OpenCart 3.x (тестируйте на копии сайта).
+
+### 👀 [Посмотреть в маркетплейсе](https://abuyfile.com/en/market/opencart/oc-mods/custom-product-page-templates-for-category-on-ocstore-opencart)
 
 ## Введение для новичков
 Модуль **Custom Category Template + JSON-LD + Price** настраивает отображение страниц товаров в интернет-магазине на ocStore/OpenCart. Он позволяет использовать разные шаблоны для товаров в определённых категориях (например, уникальный шаблон для «Генераторов») и добавляет структурированные данные (JSON-LD) для улучшения восприятия страниц поисковыми системами, такими как Google. Также модуль включает информацию о цене и наличии товаров для улучшения SEO и пользовательского опыта.
@@ -521,6 +525,6 @@ catalog/
 ## Лицензия
 BSD License
 
-## Поддержка и вклад
+## 🛟 Поддержка и вклад
 - Создавайте issue: [GitHub Issues](https://github.com/webitproff/oc-custom_category_template_jsonld_price/issues)
 - Pull request приветствуются.
